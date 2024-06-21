@@ -1,0 +1,29 @@
+create table tst_index_tab (doc_id varchar, doc_name varchar, doc_url varchar, topic varchar);
+
+accord=# select * from tst_index_tab;
+ doc_id | doc_name | doc_url | topic
+--------+----------+---------+-------
+(0 rows)
+
+accord=# insert into tst_index_tab values ("1","keyboard.pdf","doc/keyboard.pdf");
+ERROR:  column "1" does not exist
+LINE 1: insert into tst_index_tab values ("1","keyboard.pdf","doc/ke...
+                                          ^
+accord=# insert into tst_index_tab values ('1','keyboard.pdf','docs/keyboard.pdf','keyboard');
+INSERT 0 1
+accord=# insert into tst_index_tab values ('2','monitor.pdf','docs/monitor.pdf','monitor');
+INSERT 0 1
+accord=# insert into tst_index_tab values ('2','printer.pdf','docs/printer.pdf','printer');
+INSERT 0 1
+accord=# select * from tst_index_tab;
+ doc_id |   doc_name   |      doc_url      |  topic
+--------+--------------+-------------------+----------
+ 1      | keyboard.pdf | docs/keyboard.pdf | keyboard
+ 2      | monitor.pdf  | docs/monitor.pdf  | monitor
+ 2      | printer.pdf  | docs/printer.pdf  | printer
+(3 rows)
+
+
+
+
+

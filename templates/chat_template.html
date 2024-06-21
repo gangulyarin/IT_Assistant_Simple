@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Chat</title>
+    </head>
+    <body>
+        {% if chat_history!=[] %}
+            {% for c in chat_history %}
+            <p>
+                {% if c['user']!="" %}
+                <b>User: </b>{{ c['user'] }}
+                {% endif %}
+            </p>
+            <p>
+                {% if c['assistant']!="" %}
+                <b>Assistant: </b>{{ c['assistant'] }}
+                {% endif %}
+            </p>
+            <hr/>
+            {% endfor %}
+        {% endif %}
+        <p>
+            <form method="POST" action="/message">
+                <b>Enter Your Message</b>
+                <input type="text" name="user_message" id="user_message" />
+                <input type="submit" value="submit">
+            </form>
+        </p>
+    </body>
+</html>

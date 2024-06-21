@@ -1,0 +1,19 @@
+version: "3.3"
+services:
+  application:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - '3000:3000'
+    image: it_assistant_application
+    container_name: it_assistant_application
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - net
+
+
+networks:
+  net:
+    external: true
